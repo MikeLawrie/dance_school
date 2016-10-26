@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to lesson.style, lesson %></td>
+  <td><%= lesson.teacher %></td>
+  <td><%= lesson.start_time %></td>
+  <td><%= link_to 'Редактировать', edit_lesson_path(lesson) %> </td>
+  <td><%= link_to 'Удалить', lesson, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>

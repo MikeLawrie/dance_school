@@ -1,0 +1,18 @@
+<strong>Направление:</strong>
+  <%= @lesson.style %>
+</p>
+
+Преподаватель
+  <%=@lesson.teacher%>
+  <br>
+Дата и время
+  <%=@lesson.start_time%> 
+  <br>
+Продолжительность
+  <%=@lesson.duration%> 
+
+
+<br>
+<%= link_to 'Редактировать', edit_lesson_path(@lesson) %> 
+<br>
+<%= link_to 'Назад', lessons_path %>
