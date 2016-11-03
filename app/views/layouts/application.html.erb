@@ -61,7 +61,7 @@
         <div class="col-lg-3">
           <% if user_signed_in? %>
             <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
-            <p> <%=current_user.email %> </p>>
+            <p> <%=current_user.email %> </p>
           <%else%>
             <%= link_to "Войти", new_user_session_path%>
           <%end%>

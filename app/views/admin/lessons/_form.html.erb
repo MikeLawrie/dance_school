@@ -1,4 +1,4 @@
-<%= form_for lesson do |f| %>
+<%= form_for [:admin, @lesson] do |f| %>
 
   <div class="field">
     <%= f.label :style, "Направление" %>
@@ -12,7 +12,7 @@
 
   <div class="field">
     <%= f.label :start_time, "Дата и время" %>
-    <%= f.datetime_local_field :start_time :default %>
+    <%= f.datetime_local_field :start_time %>
   </div>
 
   <div class="field">

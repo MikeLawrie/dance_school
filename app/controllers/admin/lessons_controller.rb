@@ -1,5 +1,4 @@
-class LessonsController < ApplicationController
-  before_action :authenticate_user!
+class Admin::LessonsController < Admin::BaseController # у юзера наследование от ApplicationC
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,7 +12,7 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
-      redirect_to lesson_path(@lesson)
+      redirect_to admin_lesson_path(@lesson)
     else
       render :new 
     end   
@@ -27,7 +26,7 @@ class LessonsController < ApplicationController
 
   def update
      if @lesson.update(lesson_params)
-      redirect_to lesson_path(@lesson), notice: 'Урок изменен.' 
+      redirect_to admin_lesson_path(@lesson), notice: 'Урок изменен.' 
     else
        render :edit 
     end
@@ -35,7 +34,7 @@ class LessonsController < ApplicationController
 
   def destroy
     @lesson.destroy
-    redirect_to lessons_path, notice: 'Урок удален.'
+    redirect_to admin_lessons_path, notice: 'Урок удален.'
   end
 
   private
