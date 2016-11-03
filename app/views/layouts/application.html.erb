@@ -56,18 +56,7 @@
       </div>
     </div>
     
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <% if user_signed_in? %>
-            <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
-            <p> <%=current_user.email %> </p>
-          <%else%>
-            <%= link_to "Войти", new_user_session_path%>
-          <%end%>
-        </div>
-      </div>
-    </div>
+
     
        <p id="notice" class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
@@ -76,6 +65,7 @@
       <div class="row">
         <div class="col-lg-9">
           <%= bootstrap_flash %>
+            <%= render'common/top_menu' %>
           <%= yield %>
         </div>
         <div class="col-lg-3">
