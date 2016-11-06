@@ -1,0 +1,18 @@
+<h1>teachers#index</h1>
+
+<table class= "table table-striped">
+  <thead>
+    <tr>
+      <th>Преподаватели</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @teachers %>
+  </tbody>
+</table>
+
+<%= link_to 'Новый преподаватель', new_admin_teacher_path %>
+<br>
+<%= link_to 'Основное меню', root_path %>

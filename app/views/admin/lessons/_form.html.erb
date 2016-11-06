@@ -6,10 +6,9 @@
   </div>
 
   <div class="field">
-    <%= f.label :teacher, "Преподаватель" %>
-    <%= f.text_field :teacher %>
-  </div>
-
+      <%= f.label "Преподаватели" %>
+      <%= f.collection_select :teacher_ids, Teacher.all, :id, :name, {}, { multiple: true }%>
+    </div>
   <div class="field">
     <%= f.label :start_time, "Дата и время" %>
     <%= f.datetime_local_field :start_time %>

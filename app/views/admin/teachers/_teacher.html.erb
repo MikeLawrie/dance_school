@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to teacher.name, [:admin, teacher] %></td>
+
+  <td><%= link_to 'Редактировать', edit_admin_teacher_path(teacher) %> </td>
+  <td><%= link_to 'Удалить', [:admin, teacher], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>

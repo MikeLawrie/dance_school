@@ -44,7 +44,7 @@ class Admin::LessonsController < Admin::BaseController # у юзера насл�
   end
 
   def lesson_params
-    params.require(:lesson).permit(:style, :teacher, :start_time, :duration)
+    params.require(:lesson).permit(:style, :start_time, :duration, teacher_ids: [])
   end
 
 end

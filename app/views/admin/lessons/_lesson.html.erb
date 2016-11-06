@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to lesson.style, [:admin, lesson] %></td>
-  <td><%= lesson.teacher %></td>
+  <td> <%= render partial: 'admin/teachers/teacher_item', collection: lesson.teachers, as: :teacher %></td>
   <td><%= lesson.start_time %></td>
   <td><%= link_to 'Редактировать', edit_admin_lesson_path(lesson) %> </td>
   <td><%= link_to 'Удалить', [:admin, lesson], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
