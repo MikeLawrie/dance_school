@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to group.title, [:admin, group] %></td>
+  <td><%= link_to 'Редактировать', edit_admin_group_path(group) %> </td>
+  <td><%= link_to 'Удалить', [:admin, group], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>

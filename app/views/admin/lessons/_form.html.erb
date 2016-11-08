@@ -6,6 +6,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :group, "Группа" %>
+    <%= f.collection_select :group_id, Group.all, :id, :title, :include_blank => true %>
+  </div>
+
+  <div class="field">
       <%= f.label "Преподаватели" %>
       <%= f.collection_select :teacher_ids, Teacher.all, :id, :name, {}, { multiple: true }%>
     </div>

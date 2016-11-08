@@ -1,4 +1,4 @@
-class Admin::LessonsController < Admin::BaseController # у юзера наследование от ApplicationC
+class Admin::LessonsController < Admin::BaseController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -44,7 +44,7 @@ class Admin::LessonsController < Admin::BaseController # у юзера насл�
   end
 
   def lesson_params
-    params.require(:lesson).permit(:style, :start_time, :duration, teacher_ids: [])
+    params.require(:lesson).permit(:style, :start_time, :duration, :group_id, teacher_ids: [])
   end
 
 end

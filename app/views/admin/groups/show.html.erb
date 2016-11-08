@@ -5,6 +5,11 @@
  Направление: <%= @group.style %>
 
 <br>
+    Занятия
+    <ul>
+      <%= render partial: 'admin/lessons/lesson_item', collection: @group.lessons, as: :lesson %>
+    </ul>
+
 <br>
 <%= link_to 'Редактировать', edit_admin_group_path(@group) %> 
 <br>

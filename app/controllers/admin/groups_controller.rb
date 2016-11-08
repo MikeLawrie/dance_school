@@ -26,7 +26,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def update
      if @group.update(group_params)
-      redirect_to admin_group_path(@group), notice: 'Урок изменен.' 
+      redirect_to admin_group_path(@group), notice: 'Группа изменена.' 
     else
        render :edit 
     end
@@ -34,7 +34,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def destroy
     @group.destroy
-    redirect_to admin_groups_path, notice: 'Урок удален.'
+    redirect_to admin_groups_path, notice: 'Группа удалена.'
   end
 
   private

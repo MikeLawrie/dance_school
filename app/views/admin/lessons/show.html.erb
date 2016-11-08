@@ -1,6 +1,16 @@
 <strong>Направление:</strong>
   <%= @lesson.style %>
 </p>
+  
+<p>
+  <strong>Группа:</strong>
+  <% if @lesson.group.present? %>
+    <%= @lesson.group.title %>
+  <% else%>
+    Не групповое.
+  <% end %>
+</p>
+
 
 Преподаватели
       <ul>
