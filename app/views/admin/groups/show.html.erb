@@ -1,0 +1,11 @@
+<strong>Группа:</strong>
+  <%= @group.title %>
+
+<br>
+ Направление: <%= @group.style %>
+
+<br>
+<br>
+<%= link_to 'Редактировать', edit_admin_group_path(@group) %> 
+<br>
+<%= link_to 'Назад', admin_groups_path %>

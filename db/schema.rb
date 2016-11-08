@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106113901) do
+ActiveRecord::Schema.define(version: 20161108093955) do
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "style",      null: false
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lessons", force: :cascade do |t|
     t.string   "style",      null: false
+    t.string   "teacher",    null: false
     t.datetime "start_time"
     t.integer  "duration",   null: false
     t.datetime "created_at", null: false

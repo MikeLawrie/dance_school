@@ -1,0 +1,18 @@
+<h1>groups#index</h1>
+
+<table class= "table table-striped">
+  <thead>
+    <tr>
+      <th>Группы</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @groups %>
+  </tbody>
+</table>
+
+<%= link_to 'Новая группа', new_admin_group_path %>
+<br>
+<%= link_to 'Основное меню', root_path %>
