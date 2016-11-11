@@ -8,6 +8,16 @@ class LessonsController < ApplicationController
   def show
   end
 
+  def sign
+    @lesson = Lesson.find(params[:lesson_id])
+  end
+
+  def sign_init
+     @lesson = Lesson.find(params[:lesson_id])
+     @lesson.sign_init(current_user.student)
+     redirect_to lesson_path
+  end
+
   private
 
   def set_lesson

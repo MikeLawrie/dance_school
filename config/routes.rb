@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'lessons#index'
 
-    resources :lessons, only: [:index, :show] 
+    resources :lessons, only: [:index, :show] do
+      get :sign
+      patch :sign_init, on: :member
+    end
 
 
   namespace :admin do

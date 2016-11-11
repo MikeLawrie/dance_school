@@ -1,0 +1,12 @@
+<%= form_for @lesson do |f| %>
+
+ <%=@lesson.style%>
+  <td>
+    <%= form_tag sign_init_lesson_path(@lesson), method: :patch do %>
+
+      <%= submit_tag "Записаться" %>
+    <% end %>
+  </td>
+
+
+<% end %>
