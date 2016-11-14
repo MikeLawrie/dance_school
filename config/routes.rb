@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'lessons#index'
 
     resources :lessons, only: [:index, :show] do
-      get :sign
+      get :sign, on: :member
       patch :sign_init, on: :member
     end
 
