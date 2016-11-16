@@ -4,7 +4,9 @@
     <% if current_user.admin? %>
         <span><%= link_to "Админка", admin_welcome_index_path %></span> |
     <% end %>
+    <%= link_to "Мои занятия", my_lessons_path%><br>
     <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+
 <% else %>
     <%= link_to "Войти", new_user_session_path %>
 <% end %>

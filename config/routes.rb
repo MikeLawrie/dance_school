@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :lessons, only: [:index, :show] do
       get :sign, on: :member
       patch :sign_init, on: :member
+      get :my, on: :collection
     end
 
 
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
     resources :lessons
     resources :teachers
     resources :groups
-
   get 'welcome/index'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
