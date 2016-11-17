@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
    before_action :set_lesson, only: [:show, :sign, :sign_done, :sign_out, :sign_out_done]
-   before_action :authenticate_user!, only: :sign_init
+   before_action :authenticate_user!, only: [:sign, :sign_done, :sign_out, :sign_out_done]
 
   def index
     @lessons = Lesson.all
@@ -10,6 +10,7 @@ class LessonsController < ApplicationController
   end
 
   def sign
+    @presence = @lesson.student_present?(current_user.student)
   end
 
   def sign_done

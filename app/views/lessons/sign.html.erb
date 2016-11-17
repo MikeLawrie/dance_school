@@ -1,6 +1,9 @@
 <%= form_for @lesson do |f| %>
 
  <%=@lesson.style%>
+ <br>
+ <%=@presence%>
+ <br>
 
 <td><%= link_to 'Записаться', sign_done_lesson_path(@lesson), method: :patch %></td>
 <% end %>
