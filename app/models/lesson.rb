@@ -16,7 +16,8 @@ class Lesson < ApplicationRecord
   end
 
   def student_present?(student)
-    students_lessons.where(student_id: student.id).any?
+    res = students_lessons.where(student_id: student.id) & students_lessons.where(lesson_id: self.id)
+    res.any?
   end
 
 end
