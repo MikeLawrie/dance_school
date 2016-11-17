@@ -5,7 +5,12 @@ class Lesson < ApplicationRecord
   has_many :students_lessons
   has_many :students, through: :students_lessons
 
-  def sign_init(student)
+  def sign_done(student)
     self.students << student
   end
+
+  def sign_out_done(student)
+    self.students.delete(student)
+  end
+
 end
