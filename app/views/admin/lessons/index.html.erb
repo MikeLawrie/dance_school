@@ -8,7 +8,7 @@
   </thead>
 
   <tbody>
-    <% @lessons.each do |lesson|%>
+    <% @lessons.by_time.each do |lesson|%>
       <tr>  
           <%= render partial: 'lessons/lesson', object: lesson  %>
           <td><%= link_to 'Редактировать', edit_admin_lesson_path(lesson) %> </td>

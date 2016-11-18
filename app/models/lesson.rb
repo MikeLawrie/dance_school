@@ -5,6 +5,8 @@ class Lesson < ApplicationRecord
   has_many :students_lessons
   has_many :students, through: :students_lessons
 
+  scope :by_time, -> { order(:start_time) }
+
 #  validates :student_id, on: :update , uniqueness: true
 
   def sign_done(student)
