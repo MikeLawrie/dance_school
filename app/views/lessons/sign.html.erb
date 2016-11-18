@@ -1,9 +1,15 @@
 <%= form_for @lesson do |f| %>
 
- <%=@lesson.style%>
- <br>
- <%=@presence%>
- <br>
+  <%=@lesson.style%>
+  <br>
 
-<td><%= link_to 'Записаться', sign_done_lesson_path(@lesson), method: :patch %></td>
+  <% if @presence%>
+    <strong>Вы записаны на этот урок</strong>
+    <br>
+    <td><%= link_to 'Отменить запись', sign_out_done_lesson_path(@lesson), method: :delete, data: { confirm: 'Подтвержаете отмену записи?' } %></td>
+  <%else%>
+    <td><%= link_to 'Записаться', sign_done_lesson_path(@lesson), method: :patch, data: { confirm: 'Подтвержаете запсиь?' }  %></td>
+  <%end%>
 <% end %>
+
+<%= link_to 'Назад', my_lessons_path %>

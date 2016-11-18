@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     resources :lessons, only: [:index, :show] do
       get :sign, on: :member
       patch :sign_done, on: :member
-      get :sign_out, on: :member
       delete :sign_out_done, on: :member
       get :my, on: :collection
     end

@@ -18,9 +18,6 @@ class LessonsController < ApplicationController
      redirect_to lesson_path
   end
 
-  def sign_out
-  end
-
   def sign_out_done
     @lesson.sign_out_done(current_user.student)
     redirect_to lessons_path

@@ -3,6 +3,5 @@
   <td><%= link_to lesson.group.title, admin_group_path(lesson.group)  %></td>
   <td><%= render partial: 'admin/teachers/teacher_item', collection: lesson.teachers, as: :teacher %></td>
   <td><%= lesson.start_time %></td>
-  <td><%= link_to 'Записаться', sign_lesson_path(lesson)%></td>
-  <td><%= link_to 'Отписаться', sign_out_lesson_path(lesson)%></td>
+  <td><%= link_to 'Запись', sign_lesson_path(lesson)%></td>
 </tr>
