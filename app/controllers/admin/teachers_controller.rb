@@ -1,4 +1,4 @@
-class Admin::TeachersController < Admin::BaseController # у юзера наследование от ApplicationC
+class Admin::TeachersController < Admin::BaseController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -23,7 +23,6 @@ class LessonsController < ApplicationController
     redirect_to lessons_path
   end
 
-
   def my
     @lessons = current_user.student.lessons
   end

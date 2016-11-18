@@ -1,23 +1,22 @@
 <h1>Ваши занятия</h1>
 
-<table class= "table table-striped">
-  <thead>
+  <table class= "table table-striped">
+    <thead>
+      <tr>
+        <th>Занятия</th>
+      </tr>
+    </thead>
+
+    <tbody>
     <tr>
-      <th>Занятия</th>
+      <th> Урок </th>
+      <th> Группа </th>
+      <th> Преподаватель </th>
+      <th> Дата и время </th>    
     </tr>
-  </thead>
-
-  <tbody>
-  <tr>
-    <th>Урок </th>
-    <th>Группа</th>
-    <th> Препод </th>
-    <th> Дата и время </th>
-    
-  </tr>
-    <%= render @lessons %>
-  </tbody>
-</table>
-
+      <%= render @lessons %>
+    </tbody>
+  </table>
 <br>
+
 <%= link_to 'Основное меню', root_path %>

@@ -1,9 +1,20 @@
 <strong>Направление:</strong>
   <%= @lesson.style %>
 </p>
+  
+<p>
+  <strong>Группа:</strong>
+  <% if @lesson.group.present? %>
+    <%= @lesson.group.title %>
+  <% else%>
+    Не регулярное.
+  <% end %>
+</p>
 
-Преподаватель
-  <%=@lesson.teachers%>
+Преподаватели
+      <ul>
+      <%= render partial: 'teachers/teacher_item', collection: @lesson.teachers, as: :teacher %>
+    </ul>
   <br>
 Дата и время
   <%=@lesson.start_time%> 

@@ -1,7 +1,6 @@
-<tr>
+
   <td><%= link_to lesson.style, lesson %></td>
   <td><%= link_to lesson.group.title, admin_group_path(lesson.group)  %></td>
-  <td><%= render partial: 'admin/teachers/teacher_item', collection: lesson.teachers, as: :teacher %></td>
+  <td><%= render partial: 'teachers/teacher_item', collection: lesson.teachers, as: :teacher %></td>
   <td><%= lesson.start_time %></td>
-  <td><%= link_to 'Запись', sign_lesson_path(lesson)%></td>
-</tr>
+  

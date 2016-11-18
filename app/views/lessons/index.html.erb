@@ -1,21 +1,19 @@
-<h1>Lessons#index</h1>
+<h1>Занятия</h1>
 
 <table class= "table table-striped">
   <thead>
     <tr>
-      <th>Занятия</th>
+      <%= render 'head' %>
     </tr>
   </thead>
 
   <tbody>
-  <tr>
-    <th>Урок </th>
-    <th>Группа</th>
-    <th> Препод </th>
-    <th> Дата и время </th>
-    
-  </tr>
-    <%= render @lessons %>
+    <% @lessons.each do |lesson|%>
+      <tr>  
+        <%= render lesson %>
+        <td><%= link_to 'Запись', sign_lesson_path(lesson)%></td>
+      </tr>
+    <%end%>
   </tbody>
 </table>
 

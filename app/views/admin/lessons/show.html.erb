@@ -1,28 +1,4 @@
-<strong>Направление:</strong>
-  <%= @lesson.style %>
-</p>
-  
-<p>
-  <strong>Группа:</strong>
-  <% if @lesson.group.present? %>
-    <%= @lesson.group.title %>
-  <% else%>
-    Не групповое.
-  <% end %>
-</p>
-
-
-Преподаватели
-      <ul>
-      <%= render partial: 'admin/teachers/teacher_item', collection: @lesson.teachers, as: :teacher %>
-    </ul>
-  <br>
-Дата и время
-  <%=@lesson.start_time%> 
-  <br>
-Продолжительность
-  <%=@lesson.duration%> 
-
+ <%= render partial: 'lessons/show', object: lesson  %>
 
 <br>
 <%= link_to 'Редактировать', edit_admin_lesson_path(@lesson) %> 
