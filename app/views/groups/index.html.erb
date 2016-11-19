@@ -1,4 +1,4 @@
-<h1>Группы</h1>
+<h1>groups#index</h1>
 
 <table class= "table table-striped">
   <thead>
@@ -11,9 +11,8 @@
   <tbody>
     <% @groups.by_title.each do |group|%>
       <tr>  
-          <%= render partial: 'groups/group', object: group  %>
-          <td><%= link_to 'Редактировать', edit_admin_group_path(group) %> </td>
-          <td><%= link_to 'Удалить', [:admin, group], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <%= render group %>
+        <td>Пункт меню записи</td>
       </tr>
     <%end%>
   </tbody>

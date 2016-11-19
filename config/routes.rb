@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'lessons#index'
-
+  root 'welcome#index'
+  
     resources :lessons, only: [:index, :show] do
       get :sign, on: :member
       patch :sign_done, on: :member
       delete :sign_out_done, on: :member
       get :my, on: :collection
     end
-
+  resources :teachers
+  resources :groups
+  get 'welcome/index'
 
   namespace :admin do
     resources :lessons
