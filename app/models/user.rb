@@ -14,6 +14,7 @@ class User < ApplicationRecord
     student = Student.new
     student.user_id = self.id 
     student.email = self.email
+    student.save
   end
 
 end

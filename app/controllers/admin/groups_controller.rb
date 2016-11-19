@@ -12,7 +12,7 @@ class Admin::GroupsController < Admin::BaseController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to admin_group_path(@group)
+      redirect_to admin_group_path(@group), notice: 'Группа создана.'
     else
       render :new 
     end   

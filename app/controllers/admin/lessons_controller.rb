@@ -12,7 +12,7 @@ class Admin::LessonsController < Admin::BaseController
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
-      redirect_to admin_lesson_path(@lesson)
+      redirect_to admin_lesson_path(@lesson), notice: 'Урок создан.' 
     else
       render :new 
     end   
