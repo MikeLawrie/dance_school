@@ -1,4 +1,4 @@
-class Admin::GroupsController < Admin::BaseController
+class GroupsController < ApplicationController
   before_action :set_group, only: [:show]
 
   def index
