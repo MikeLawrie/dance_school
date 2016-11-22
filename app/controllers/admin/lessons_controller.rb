@@ -7,6 +7,7 @@ class Admin::LessonsController < Admin::BaseController
 
   def new
     @lesson = Lesson.new
+    @lesson.start_time = Time.now.strftime('%F %R')  
   end
 
   def create
