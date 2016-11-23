@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161111100826) do
     t.string   "style",      null: false
     t.datetime "start_time"
     t.integer  "duration",   null: false
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "group_id"

@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Teacher.create(name: 'Параход')
+Group.create(style:'Хастел', title: 'ДнД')
+Lesson.create(style:'Хастел',start_time:'2016-11-23T10:11:00', group_id: '1', duration: 60)
+User.create(email: 'test@test.com', password: 'qazwsx', admin: true)
+User.create(email: 'test2@test.com', password: 'qazwsx')

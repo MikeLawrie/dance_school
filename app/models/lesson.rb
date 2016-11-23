@@ -6,6 +6,9 @@ class Lesson < ApplicationRecord
   has_many :students, through: :students_lessons
 
   scope :by_time, -> { order(:start_time) }
+  before_validation :set_end_time
+
+  attr
 
 #  validates :student_id, on: :update , uniqueness: true
 
@@ -20,6 +23,11 @@ class Lesson < ApplicationRecord
   def student_present?(student)
     present = students_lessons.where(student_id: student.id) & students_lessons.where(lesson_id: self.id)
     present.any?
+  end
+
+
+  def set_end_time
+    self.end_time = self.start_time + self.duration * 60
   end
 
 end
