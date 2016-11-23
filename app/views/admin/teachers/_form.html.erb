@@ -1,4 +1,5 @@
 <%= form_for [:admin, @teacher] do |f| %>
+  <%= render 'common/errors', resource: @teacher %>  
 
   <div class="field">
     <%= f.label :name, "Фамилия и имя" %>

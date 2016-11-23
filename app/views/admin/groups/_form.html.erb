@@ -1,4 +1,5 @@
 <%= form_for [:admin, @group] do |f| %>
+  <%= render 'common/errors', resource: @group %>
 
   <div class="field">
     <%= f.label :title, "Название" %>
