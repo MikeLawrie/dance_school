@@ -8,6 +8,8 @@ class Lesson < ApplicationRecord
   scope :by_time, -> { order(:start_time) }
   before_validation :set_end_time
 
+  validate :validate_time
+
   attr
 
 #  validates :student_id, on: :update , uniqueness: true
@@ -24,7 +26,18 @@ class Lesson < ApplicationRecord
     present = students_lessons.where(student_id: student.id) & students_lessons.where(lesson_id: self.id)
     present.any?
   end
+  
+  private
 
+  def validate_time
+    les = Lesson.all
+    les.each do |lesson|
+      if (lesson.start_time > self.start_time && lesson.start_time < self.end_time) || 
+         (lesson.end_time > self.start_time && lesson.end_time < self.end_time)
+          errors.add(:base,'Время проведения пересекается с другими занятиями')
+      end
+    end
+  end
 
   def set_end_time
     self.end_time = self.start_time + self.duration * 60
