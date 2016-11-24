@@ -1,5 +1,9 @@
  <%= render partial: 'lessons/show', object: @lesson  %>
 
+ <strong>Записан на занятия</strong>
+
+ <%= render partial: 'admin/students/student', collection: @lesson.students, as: :student %>
+
 <br>
 <%= link_to 'Редактировать', edit_admin_lesson_path(@lesson) %> 
 <br>
