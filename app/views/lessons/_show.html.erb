@@ -11,14 +11,13 @@
   <% end %>
 </p>
 
-Преподаватели
+Преподаватели:
       <ul>
       <%= render partial: 'teachers/teacher_item', collection: @lesson.teachers, as: :teacher %>
     </ul>
   <br>
-Дата и время начала <%=@lesson.start_time.strftime '%d.%m.%Y %H:%M'%>
+Дата и время начала: <%=@lesson.start_time.strftime '%d.%m.%Y %H:%M'%>
    <br> 
-Дата и время окончания <%=@lesson.end_time.strftime '%d.%m.%Y %H:%M'%> 
+Дата и время окончания: <%=@lesson.end_time.strftime '%d.%m.%Y %H:%M'%> 
   <br>
-Продолжительность
-  <%=@lesson.duration%> 
+Продолжительность: <%=@lesson.duration%> 

@@ -1,9 +1,11 @@
- <%= render partial: 'lessons/show', object: @lesson  %>
+<%= render partial: 'lessons/show', object: @lesson  %>
+  <br>
+  <br>
+  <strong>Записаны на занятие</strong>
 
- <strong>Записан на занятия</strong>
-
- <%= render partial: 'admin/students/student', collection: @lesson.students, as: :student %>
-
+  <table class= "table table-striped">
+    <%= render partial: 'admin/students/student', collection: @lesson.students, as: :student %>
+  </table>
 <br>
 <%= link_to 'Редактировать', edit_admin_lesson_path(@lesson) %> 
 <br>
