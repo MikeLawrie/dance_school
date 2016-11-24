@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20161111100826) do
 
   create_table "students", force: :cascade do |t|
     t.string   "email",      null: false
+    t.string   "first_name", null: false
+    t.string   "last_name",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -68,6 +70,8 @@ ActiveRecord::Schema.define(version: 20161111100826) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "first_name",                             null: false
+    t.string   "last_name",                              null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false

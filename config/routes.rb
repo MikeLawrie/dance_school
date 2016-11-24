@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
   
-    resources :lessons, only: [:index, :show] do
-      get :sign, on: :member
-      patch :sign_done, on: :member
-      delete :sign_out_done, on: :member
-      get :my, on: :collection
-    end
+  resources :lessons, only: [:index, :show] do
+    get :sign, on: :member
+    patch :sign_done, on: :member
+    delete :sign_out_done, on: :member
+    get :my, on: :collection
+  end
   resources :teachers
   resources :groups
   get 'welcome/index'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :lessons
     resources :teachers
     resources :groups
+    resources :students
   get 'welcome/index'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

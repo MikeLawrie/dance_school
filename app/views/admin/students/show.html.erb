@@ -1,0 +1,12 @@
+<h2>Ученик</h2>
+  <br>
+  <strong>
+    <%= @student.first_name %>
+    <%= @student.last_name %>
+  </strong>
+  <br>
+  <br>
+  <%= render partial: 'lessons/lesson_item', collection: @student.lessons, as: :lesson %>
+  <br>
+  <br>
+<%= link_to 'Назад', admin_groups_path %>
