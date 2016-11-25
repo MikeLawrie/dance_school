@@ -3,6 +3,8 @@
   <strong>
     <%= @student.first_name %>
     <%= @student.last_name %>
+   <br>
+  <%=@student.email%>
   </strong>
   <br>
   <br>
@@ -16,4 +18,4 @@
   </table>
   <br>
   <br>
-<%= link_to 'Назад', admin_groups_path %>
+<%= link_to 'Назад', admin_students_path %>
