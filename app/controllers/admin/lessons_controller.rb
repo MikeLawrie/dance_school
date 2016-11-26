@@ -1,5 +1,5 @@
 class Admin::LessonsController < Admin::BaseController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :sign, :sign_done]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :sign, :sign_done, :sign_out_done]
 
   def index
     @lessons = Lesson.all
@@ -49,8 +49,9 @@ class Admin::LessonsController < Admin::BaseController
   end
 
   def sign_out_done
-    @lesson.sign_out_done(current_user.student)
-    redirect_to lessons_path
+    student = Student.find(params[:student_id])    
+    @lesson.sign_out_done(student)
+    redirect_to admin_lesson_path(@lesson)
   end
 
   private

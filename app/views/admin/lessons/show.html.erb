@@ -4,7 +4,17 @@
   <strong>Записаны на занятие</strong>
 
   <table class= "table table-striped">
-    <%= render partial: 'admin/students/student', collection: @lesson.students, as: :student %>
+  <% @lesson.students.each do |student|%>
+  		<tr>
+    		<%= render partial: 'admin/students/student_item', object: student %>
+    		<td>   
+					<%= form_tag(sign_out_done_admin_lesson_path , method: :delete ) do %>
+    				<%= hidden_field_tag :student_id, student.id %>
+    				<%= submit_tag 'Отменить запись', class: "btn btn-default" %>
+  				<% end %> 
+  			</td>
+  		</tr>
+  	<%end%>
   </table>
 <br>
 <%= link_to 'Записать', sign_admin_lesson_path(@lesson) %>   
