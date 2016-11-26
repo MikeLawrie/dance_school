@@ -1,5 +1,5 @@
 class Admin::LessonsController < Admin::BaseController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :sign, :sign_done]
 
   def index
     @lessons = Lesson.all
@@ -36,6 +36,21 @@ class Admin::LessonsController < Admin::BaseController
   def destroy
     @lesson.destroy
     redirect_to admin_lessons_path, notice: 'Урок удален.'
+  end
+
+  def sign
+    @students = Student.all
+  end
+
+  def sign_done
+    student = Student.find(params[:student_id])
+    @lesson.sign_done(student)
+    redirect_to admin_lesson_path(@lesson)
+  end
+
+  def sign_out_done
+    @lesson.sign_out_done(current_user.student)
+    redirect_to lessons_path
   end
 
   private

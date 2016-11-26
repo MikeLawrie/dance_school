@@ -7,6 +7,8 @@
     <%= render partial: 'admin/students/student', collection: @lesson.students, as: :student %>
   </table>
 <br>
+<%= link_to 'Записать', sign_admin_lesson_path(@lesson) %>   
+<br>
 <%= link_to 'Редактировать', edit_admin_lesson_path(@lesson) %> 
 <br>
 <%= link_to 'Назад', admin_lessons_path %>

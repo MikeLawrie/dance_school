@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   namespace :admin do
-    resources :lessons
+    resources :lessons  do
+      get :sign, on: :member
+      post :sign_done, on: :member
+      delete :sign_out_done, on: :member
+   end
     resources :teachers
     resources :groups
     resources :students
