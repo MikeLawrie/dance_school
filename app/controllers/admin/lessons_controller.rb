@@ -39,7 +39,8 @@ class Admin::LessonsController < Admin::BaseController
   end
 
   def sign
-    @students = Student.all
+    term = params[:term]
+    @students = Student.search(term)
   end
 
   def sign_done

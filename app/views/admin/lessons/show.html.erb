@@ -4,7 +4,7 @@
   <strong>Записаны на занятие</strong>
 
   <table class= "table table-striped">
-  <% @lesson.students.each do |student|%>
+  <% @lesson.students.by_last_name.each do |student|%>
   		<tr>
     		<%= render partial: 'admin/students/student_item', object: student %>
     		<td>   

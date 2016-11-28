@@ -2,16 +2,14 @@
 
 <table class= "table table-striped">
   <thead>
-    <tr>
-      <%= render 'lessons/head' %>  
-    </tr>
+    <%= render 'lessons/head' %>  
   </thead>
 
-<table class= "table table-striped">
+  <tbody>
     <% @lessons.by_time.each do |lesson|%>
       <tr>  
           <%= render partial: 'lessons/lesson', object: lesson  %>
-          <td><%= link_to 'Записавшиеся', admin_lesson_path(lesson) %> </td>           
+          <td><%= link_to 'Запись', admin_lesson_path(lesson) %> </td>           
           <td><%= link_to 'Редактировать', edit_admin_lesson_path(lesson) %> </td>
           <td><%= link_to 'Удалить', [:admin, lesson], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
       </tr>

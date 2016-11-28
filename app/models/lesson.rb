@@ -14,6 +14,7 @@ class Lesson < ApplicationRecord
 
 #  validates :student_id, on: :update , uniqueness: true
 
+
   def sign_done(student)
     self.students << student
   end
