@@ -44,7 +44,7 @@ class Admin::TeachersController < Admin::BaseController
   end
 
   def teacher_params
-    params.require(:teacher).permit(:name)
+    params.require(:teacher).permit(:name, :photo)
   end
 
 end

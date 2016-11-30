@@ -6,7 +6,9 @@
     <%= f.text_field :name %>
   </div>
 
-
+  <div>
+   <%= f.file_field :photo %>
+  </div>
 
   <div class="actions">
     <%= f.submit "#{@teacher.new_record? ? 'Создать' : 'Изменить' }" %>
