@@ -2,7 +2,7 @@ class Admin::StudentsController < Admin::BaseController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
   def index
-    @students = Student.all
+    @students = Student.order(:last_name).page params[:page]
   end
 
   def show
