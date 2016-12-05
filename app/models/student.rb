@@ -3,7 +3,9 @@ class Student < ApplicationRecord
   has_many :students_lessons
   has_many :lessons, through: :students_lessons
 
-  scope :by_last_name, -> { order(:last_name) }
+  #paginates_per 5
+
+  scope :by_last_name, -> { order(:last_name) } # убирать?
 
   def self.search(term)
     if term
