@@ -6,7 +6,7 @@
   </thead>
 
   <tbody>
-    <% @lessons.by_time.each do |lesson|%>
+    <% @lessons.each do |lesson|%>
       <tr>  
           <%= render partial: 'lessons/lesson', object: lesson  %>
           <td><%= link_to 'Запись', admin_lesson_path(lesson) %> </td>           
@@ -16,7 +16,9 @@
     <%end%>
   </tbody>
 </table>
-
+<br>
+<%= paginate @lessons %>
+<br>
 <%= link_to 'Новый урок', new_admin_lesson_path %>
 <br>
 <%= link_to 'Основное меню', admin_welcome_index_path %>

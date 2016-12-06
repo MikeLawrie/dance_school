@@ -6,7 +6,7 @@
   </thead>
 
   <tbody>
-    <% @lessons.by_time.each do |lesson|%>
+    <% @lessons.each do |lesson|%>
       <tr>  
         <%= render lesson %>
         <td><%= link_to 'Запись', sign_lesson_path(lesson)%></td>
@@ -15,5 +15,7 @@
   </tbody>
 </table>
 
+<br>
+<%= paginate @lessons %>
 <br>
 <%= link_to 'Основное меню', root_path %>

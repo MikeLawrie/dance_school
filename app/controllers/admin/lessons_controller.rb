@@ -2,7 +2,7 @@ class Admin::LessonsController < Admin::BaseController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :sign, :sign_done, :sign_out_done]
 
   def index
-    @lessons = Lesson.all
+    @lessons =  Lesson.order(:start_time).page params[:page]
   end
 
   def new
