@@ -41,7 +41,6 @@ class Admin::LessonsController < Admin::BaseController
   def sign
     term = params[:term]
     @students = Student.search(term).order(:last_name).page(params[:page])
-   
   end
 
   def sign_done

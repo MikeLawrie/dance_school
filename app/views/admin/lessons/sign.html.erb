@@ -2,10 +2,7 @@
   <%= render 'common/errors', resource: @lesson %>
 
   <h2>Запись</h2>
-
    Занятие: <%= render partial: 'lessons/lesson', object: @lesson  %>
-
-
   <br>
   <h3>Поиск</h3>
   <br>
@@ -14,7 +11,7 @@
     <%= submit_tag 'Искать' %>
   <% end %>
   Введите фамилию ученика
-
+  
   <br>
 
   <table class= "table table-striped">
@@ -24,18 +21,7 @@
     </thead>
 
     <tbody>
-      <%  @students.each do |student|%>
-        <tr>  
-				  <td> <%= student.first_name %></td>
-				  <td> <%= student.last_name %></td>
-				  <td>   
-				  <%= form_tag(sign_done_admin_lesson_path, method: :patch) do %>
-            <%= hidden_field_tag :student_id, student.id %>
-            <%= submit_tag 'Записать', class: "btn btn-default" %>
-          <% end %> 
-  			 </td>
-        </tr>
-      <%end%>
+      <%=render @students%>
     </tbody>
 	</table>
 <%= paginate @students %>

@@ -1,4 +1,11 @@
 <h1>Ученики</h1>
+  <h3>Поиск</h3>
+  <br>
+  <%= form_tag(admin_students_path, method: :get) do %>
+    <%= text_field_tag :term, params[:term] %>
+    <%= submit_tag 'Искать' %>
+  <% end %>
+  Введите фамилию ученика
 
 <table class= "table table-striped">
   <thead>
