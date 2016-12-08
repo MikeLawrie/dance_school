@@ -21,7 +21,7 @@
     </thead>
 
     <tbody>
-      <%=render @students%>
+       <%= render partial: 'admin/students/student_sign', collection: @students, as: :student %>
     </tbody>
 	</table>
 <%= paginate @students %>

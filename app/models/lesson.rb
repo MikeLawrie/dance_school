@@ -16,7 +16,9 @@ class Lesson < ApplicationRecord
 
 
   def sign_done(student)
+    student_lesson = find_students_lessons(student)
     self.students << student
+    student_lesson.sign_by_admin = true
   end
 
   def sign_out_done(student)
@@ -24,7 +26,7 @@ class Lesson < ApplicationRecord
   end
 
   def student_present?(student)
-    present = students_lessons.where(student_id: student.id) & students_lessons.where(lesson_id: self.id)
+    present = find_students_lessons(student)
     present.any?
   end
   
@@ -42,6 +44,10 @@ class Lesson < ApplicationRecord
 
   def set_end_time
     self.end_time = self.start_time + self.duration * 60
+  end
+
+  def find_students_lessons(student)
+    students_lessons.where(student_id: student.id) & students_lessons.where(lesson_id: self.id)
   end
 
 end
