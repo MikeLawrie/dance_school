@@ -15,10 +15,11 @@ class Lesson < ApplicationRecord
 #  validates :student_id, on: :update , uniqueness: true
 
 
-  def sign_done(student)
-    student_lesson = find_students_lessons(student)
+  def sign_done(student, sign = false)
     self.students << student
-    student_lesson.sign_by_admin = true
+    student_lesson = find_students_lessons(student)
+    student_lesson.sign_by_admin = sign
+    student_lesson.save
   end
 
   def sign_out_done(student)
@@ -27,7 +28,6 @@ class Lesson < ApplicationRecord
 
   def student_present?(student)
     present = find_students_lessons(student)
-    present.any?
   end
   
   private
@@ -47,7 +47,7 @@ class Lesson < ApplicationRecord
   end
 
   def find_students_lessons(student)
-    students_lessons.where(student_id: student.id) & students_lessons.where(lesson_id: self.id)
+    students_lessons.where(student_id: student.id, lesson_id: self.id).first
   end
 
 end

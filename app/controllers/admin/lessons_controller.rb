@@ -45,7 +45,7 @@ class Admin::LessonsController < Admin::BaseController
 
   def sign_done
     student = Student.find(params[:student_id])
-    @lesson.sign_done(student)
+    @lesson.sign_done(student, true )
     redirect_to admin_lesson_path(@lesson)
   end
 
