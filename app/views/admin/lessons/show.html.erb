@@ -4,19 +4,28 @@
   <strong>Записаны на занятие</strong>
 
   <table class= "table table-striped">
-  <% @lesson.students.by_last_name.each do |student|%>
-  		<tr>
-    		<%= render partial: 'admin/students/student_item', object: student %>
-    		<td>   
-					<%= form_tag(sign_out_done_admin_lesson_path , method: :delete ) do %>
-    				<%= hidden_field_tag :student_id, student.id %>
+    <thead>
+      <td>Фамилия</td>
+      <td>Имя</td>
+      <td>Записан админимтратором</td>
+    </thead>
+    <tbody>
+      <% @list.each do |student, sign|%>
+  		  <tr>
+    		  <%= render partial: 'admin/students/student_item', object: student %>
+    		  <td> <%= sign ? "Да" : "Нет"%> </td>
+          <td>   
+            <%= form_tag(sign_out_done_admin_lesson_path , method: :delete ) do %>
+    			 	<%= hidden_field_tag :student_id, student.id %>
     				<%= submit_tag 'Отменить запись', class: "btn btn-default" %>
   				<% end %> 
-  			</td>
-  		</tr>
-  	<%end%>
+          </td>
+  		  </tr>
+      <%end%>
+    </tbody>
   </table>
 <br>
+
 <%= link_to 'Записать', sign_admin_lesson_path(@lesson) %>   
 <br>
 <%= link_to 'Редактировать', edit_admin_lesson_path(@lesson) %> 

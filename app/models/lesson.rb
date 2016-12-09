@@ -27,9 +27,18 @@ class Lesson < ApplicationRecord
   end
 
   def student_present?(student)
-    present = find_students_lessons(student)
+    find_students_lessons(student)
   end
   
+  def admin_sign_list
+    @list = {}
+    self.students.by_last_name.each do |stud|
+      sl = find_students_lessons(stud)
+      @list[stud] = sl.sign_by_admin
+    end
+    @list
+  end
+
   private
 
   def validate_time

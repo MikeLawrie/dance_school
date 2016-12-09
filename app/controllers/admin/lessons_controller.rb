@@ -20,6 +20,7 @@ class Admin::LessonsController < Admin::BaseController
   end
 
   def show
+    @list = @lesson.admin_sign_list
   end
 
   def edit
