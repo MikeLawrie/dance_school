@@ -8,17 +8,25 @@
       <td>Фамилия</td>
       <td>Имя</td>
       <td>Записан админимтратором</td>
+      <td>Занятие посетил</td>      
     </thead>
     <tbody>
-      <% @list.each do |student, sign|%>
+      <% @list.each do |student, stud_les|%>
   		  <tr>
     		  <%= render partial: 'admin/students/student_item', object: student %>
-    		  <td> <%= sign ? "Да" : "Нет"%> </td>
+    		  <td> <%= stud_les.sign_by_admin ? "Да" : "Нет" %> </td>
+          <td> <%= stud_les.presence ? "Да" : "Нет" %> </td>
           <td>   
             <%= form_tag(sign_out_done_admin_lesson_path , method: :delete ) do %>
     			 	<%= hidden_field_tag :student_id, student.id %>
     				<%= submit_tag 'Отменить запись', class: "btn btn-default" %>
   				<% end %> 
+          </td>
+          <td>   
+            <%= form_tag(student_present_admin_lesson_path,  method: :patch ) do %>
+            <%= hidden_field_tag :student_lesson_id, stud_les.id %>
+            <%= submit_tag 'Занятие посетил', class: "btn btn-default" %>
+          <% end %> 
           </td>
   		  </tr>
       <%end%>

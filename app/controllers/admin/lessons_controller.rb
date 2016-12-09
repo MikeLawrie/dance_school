@@ -1,5 +1,5 @@
 class Admin::LessonsController < Admin::BaseController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :sign, :sign_done, :sign_out_done]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :sign, :sign_done, :sign_out_done, :student_present]
 
   def index
     @lessons =  Lesson.order(:start_time).page params[:page]
@@ -20,7 +20,7 @@ class Admin::LessonsController < Admin::BaseController
   end
 
   def show
-    @list = @lesson.admin_sign_list
+    @list = @lesson.lesson_students_status
   end
 
   def edit
@@ -54,6 +54,12 @@ class Admin::LessonsController < Admin::BaseController
     student = Student.find(params[:student_id])    
     @lesson.sign_out_done(student)
     redirect_to admin_lesson_path(@lesson)
+  end
+
+  def student_present
+    student_lesson = StudentsLesson.find(params[:student_lesson_id])
+    @lesson.student_present(student_lesson)
+    redirect_to admin_lesson_path(@lesson)    
   end
 
   private

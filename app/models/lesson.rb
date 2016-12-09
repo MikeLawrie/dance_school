@@ -30,13 +30,18 @@ class Lesson < ApplicationRecord
     find_students_lessons(student)
   end
   
-  def admin_sign_list
+  def lesson_students_status
     @list = {}
     self.students.by_last_name.each do |stud|
       sl = find_students_lessons(stud)
-      @list[stud] = sl.sign_by_admin
+      @list[stud] = sl
     end
     @list
+  end
+
+  def student_present(sl)
+    sl.presence = true
+    sl.save
   end
 
   private

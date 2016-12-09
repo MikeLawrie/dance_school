@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :sign, on: :member
       patch :sign_done, on: :member
       delete :sign_out_done, on: :member
+      patch :student_present, on: :member
    end
     resources :teachers
     resources :groups
