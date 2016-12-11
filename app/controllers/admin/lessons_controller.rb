@@ -42,18 +42,19 @@ class Admin::LessonsController < Admin::BaseController
   def sign
     term = params[:term]
     @students = Student.search(term).order(:last_name).page(params[:page])
+    @list = @lesson.lesson_students_status(@students)
   end
 
   def sign_done
     student = Student.find(params[:student_id])
     @lesson.sign_done(student, true )
-    redirect_to admin_lesson_path(@lesson)
+    redirect_to sign_admin_lesson_path(@lesson)
   end
 
   def sign_out_done
     student = Student.find(params[:student_id])    
     @lesson.sign_out_done(student)
-    redirect_to admin_lesson_path(@lesson)
+    redirect_to sign_admin_lesson_path(@lesson)
   end
 
   def student_present

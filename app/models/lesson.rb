@@ -30,9 +30,9 @@ class Lesson < ApplicationRecord
     find_students_lessons(student)
   end
   
-  def lesson_students_status
+  def lesson_students_status(studs = self.students)
     @list = {}
-    self.students.by_last_name.each do |stud|
+    studs.by_last_name.each do |stud|
       sl = find_students_lessons(stud)
       @list[stud] = sl
     end

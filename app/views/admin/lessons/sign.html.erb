@@ -21,7 +21,16 @@
     </thead>
 
     <tbody>
-       <%= render partial: 'admin/students/student_sign', collection: @students, as: :student %>
+      <% @list.each do |student, stud_les|%>    
+      <tr>
+      	<%= render partial: 'admin/students/student', locals: {student: student } %>
+        <% if stud_les %> 
+      		<%= render partial: 'admin/students/student_sign_out', locals: {student: student } %>
+      	<% else %>
+					<%= render partial: 'admin/students/student_sign', locals: {student: student } %>
+     		<%end%>
+      </tr>	
+      <%end%>
     </tbody>
 	</table>
 <%= paginate @students %>
