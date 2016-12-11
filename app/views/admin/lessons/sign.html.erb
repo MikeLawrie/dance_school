@@ -23,7 +23,7 @@
     <tbody>
       <% @list.each do |student, stud_les|%>    
       <tr>
-      	<%= render partial: 'admin/students/student', locals: {student: student } %>
+      	<%= render partial: 'admin/students/student_item', locals: {student: student } %>
         <% if stud_les %> 
       		<%= render partial: 'admin/students/student_sign_out', locals: {student: student } %>
       	<% else %>

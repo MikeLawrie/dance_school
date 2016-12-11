@@ -13,7 +13,7 @@
     <tbody>
       <% @list.each do |student, stud_les|%>
   		  <tr>
-    		  <%= render partial: 'admin/students/student', object: student %>
+    		  <%= render partial: 'admin/students/student_item', locals: {student: student }%>
     		  <td> <%= stud_les.sign_by_admin ? "Да" : "Нет" %> </td>
           <td> <%= stud_les.presence ? "Да" : "Нет" %> </td>
           <td>   
