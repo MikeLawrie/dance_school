@@ -18,7 +18,8 @@ Rails.application.routes.draw do
       patch :sign_done, on: :member
       delete :sign_out_done, on: :member
       patch :student_present, on: :member
-   end
+      delete :student_not_present, on: :member
+    end
     resources :teachers
     resources :groups
     resources :students

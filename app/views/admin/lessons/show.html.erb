@@ -22,12 +22,21 @@
     				<%= submit_tag 'Отменить запись', class: "btn btn-default" %>
   				<% end %> 
           </td>
+          <% if stud_les.presence %>
+          <td>
+            <%= form_tag(student_not_present_admin_lesson_path,  method: :delete ) do %>
+            <%= hidden_field_tag :student_lesson_id, stud_les.id %>
+            <%= submit_tag 'Занятие не посетил', class: "btn btn-default" %>
+          </td> 
+          <% end %> 
+          <% else%>
           <td>   
             <%= form_tag(student_present_admin_lesson_path,  method: :patch ) do %>
             <%= hidden_field_tag :student_lesson_id, stud_les.id %>
             <%= submit_tag 'Занятие посетил', class: "btn btn-default" %>
+          </td>  
           <% end %> 
-          </td>
+          <% end %>
   		  </tr>
       <%end%>
     </tbody>

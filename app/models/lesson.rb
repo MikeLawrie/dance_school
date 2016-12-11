@@ -39,8 +39,8 @@ class Lesson < ApplicationRecord
     @list
   end
 
-  def student_present(sl)
-    sl.presence = true
+  def student_presence(sl,val)
+    sl.presence = val
     sl.save
   end
 

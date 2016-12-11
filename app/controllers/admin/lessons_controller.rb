@@ -1,5 +1,5 @@
 class Admin::LessonsController < Admin::BaseController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :sign, :sign_done, :sign_out_done, :student_present]
+  before_action :set_lesson, except: [:index, :new, :create] 
 
   def index
     @lessons =  Lesson.order(:start_time).page params[:page]
@@ -58,7 +58,13 @@ class Admin::LessonsController < Admin::BaseController
 
   def student_present
     student_lesson = StudentsLesson.find(params[:student_lesson_id])
-    @lesson.student_present(student_lesson)
+    @lesson.student_presence(student_lesson, true)
+    redirect_to admin_lesson_path(@lesson)    
+  end
+
+  def student_not_present
+    student_lesson = StudentsLesson.find(params[:student_lesson_id])
+    @lesson.student_presence(student_lesson, false)
     redirect_to admin_lesson_path(@lesson)    
   end
 
