@@ -44,6 +44,15 @@ class Lesson < ApplicationRecord
     sl.save
   end
 
+  def self.relevant_lessons
+    week = Time.now.strftime('%W')
+    lessons = []    
+    Lesson.all.each do |lesson|
+      lessons << lesson if lesson.start_time.strftime('%W') == week
+    end
+    lessons
+  end
+
   private
 
   def validate_time

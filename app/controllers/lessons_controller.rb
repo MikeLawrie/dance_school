@@ -3,7 +3,7 @@ class LessonsController < ApplicationController
    before_action :authenticate_user!, only: [:sign, :sign_done, :sign_out, :sign_out_done]
 
   def index
-    @lessons =  Lesson.order(:start_time).page params[:page]
+    @lessons = Lesson.relevant_lessons
   end
 
   def show
