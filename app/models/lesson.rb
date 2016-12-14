@@ -45,13 +45,26 @@ class Lesson < ApplicationRecord
   end
 
   def self.relevant_lessons(weeks_before, weeks_after)
+    lessons = []   
     curent_week = Time.now.strftime('%W').to_i
-    range = (curent_week - weeks_before)..(curent_week + weeks_after)
-    lessons = []    
-    Lesson.order(:start_time).each do |lesson|
+    range = (curent_week - weeks_before)..(curent_week + weeks_after) 
+    Lesson.find_each do |lesson|
       lessons << lesson if range.include?(lesson.start_time.strftime('%W').to_i) 
     end
-    lessons
+    self.sort_by_time(lessons)
+  end
+
+  def self.sort_by_time(lessons)
+    lessons_sorted = []
+    time_lessons = {}
+    lessons.each do |lesson|
+      time_lessons[lesson.start_time] = lesson
+    end 
+    lessons_time = time_lessons.sort
+    lessons_time.each do |time,lesson|
+      lessons_sorted << lesson
+    end
+    lessons_sorted
   end
 
   private
