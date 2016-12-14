@@ -24,7 +24,12 @@ class LessonsController < ApplicationController
   end
 
   def my
-    @lessons = current_user.student.lessons
+    @lessons = current_user.student.lessons.where('end_time > ?', Time.now).order(:start_time)
+  end
+
+  def in_past
+    @lessons = current_user.student.lessons.where('end_time < ?', Time.now).order(:start_time)
+    render :my
   end
 
   private

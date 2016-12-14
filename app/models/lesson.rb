@@ -70,7 +70,7 @@ class Lesson < ApplicationRecord
   private
 
   def validate_time
-    les = Lesson.all
+    les = Lesson.where('end_time > ?', Time.now)
     les.each do |lesson|
       if (lesson.start_time > self.start_time && lesson.start_time < self.end_time) || 
          (lesson.end_time > self.start_time && lesson.end_time < self.end_time)
