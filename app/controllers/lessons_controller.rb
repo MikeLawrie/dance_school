@@ -3,7 +3,7 @@ class LessonsController < ApplicationController
    before_action :authenticate_user!, only: [:sign, :sign_done, :sign_out, :sign_out_done]
 
   def index
-    @lessons = Lesson.relevant_lessons
+    @lessons = Lesson.relevant_lessons(0,1)
   end
 
   def show

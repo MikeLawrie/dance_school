@@ -44,11 +44,12 @@ class Lesson < ApplicationRecord
     sl.save
   end
 
-  def self.relevant_lessons
-    week = Time.now.strftime('%W')
+  def self.relevant_lessons(weeks_before, weeks_after)
+    curent_week = Time.now.strftime('%W').to_i
+    range = (curent_week - weeks_before)..(curent_week + weeks_after)
     lessons = []    
-    Lesson.all.each do |lesson|
-      lessons << lesson if lesson.start_time.strftime('%W') == week
+    Lesson.order(:start_time).each do |lesson|
+      lessons << lesson if range.include?(lesson.start_time.strftime('%W').to_i) 
     end
     lessons
   end

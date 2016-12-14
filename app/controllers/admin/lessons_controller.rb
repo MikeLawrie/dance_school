@@ -2,7 +2,7 @@ class Admin::LessonsController < Admin::BaseController
   before_action :set_lesson, except: [:index, :new, :create] 
 
   def index
-    @lessons =  Lesson.order(:start_time).page params[:page]
+    @lessons = @lessons = Lesson.relevant_lessons(1,2)
   end
 
   def new
