@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     patch :sign_done, on: :member
     delete :sign_out_done, on: :member
     get :my, on: :collection
-    get :in_past, on: :collection
+    get :past, on: :collection
   end
   resources :teachers
   resources :groups

@@ -27,7 +27,7 @@ class LessonsController < ApplicationController
     @lessons = current_user.student.lessons.where('end_time > ?', Time.now).order(:start_time)
   end
 
-  def in_past
+  def past
     @lessons = current_user.student.lessons.where('end_time < ?', Time.now).order(:start_time)
     render :my
   end
