@@ -1,5 +1,9 @@
 <h1>Занятия</h1>
 
+<%= link_to 'Актуальные занятия', admin_lessons_path %>
+<%= link_to 'Все занятия', index_all_admin_lessons_path %>
+
+
 <table class= "table table-striped">
   <thead>
     <%= render 'lessons/head' %>  
@@ -17,7 +21,9 @@
   </tbody>
 </table>
 <br>
-
+<% if @pagination %>
+<%= paginate @lessons %>
+<%end%>
 <br>
 <%= link_to 'Новый урок', new_admin_lesson_path %>
 <br>

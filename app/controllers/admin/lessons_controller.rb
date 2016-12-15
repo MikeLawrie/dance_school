@@ -1,8 +1,14 @@
 class Admin::LessonsController < Admin::BaseController
-  before_action :set_lesson, except: [:index, :new, :create] 
+  before_action :set_lesson, except: [:index, :index_all, :new, :create] 
 
   def index
     @lessons = Lesson.relevant_lessons(1,2)
+  end
+
+  def index_all
+    @lessons = Lesson.order(:start_time).page(params[:page])
+    @pagination = true
+    render :index
   end
 
   def new

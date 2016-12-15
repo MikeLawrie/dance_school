@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :lessons  do
       get :sign, on: :member
+      get :index_all, on: :collection
       patch :sign_done, on: :member
       delete :sign_out_done, on: :member
       patch :student_present, on: :member
