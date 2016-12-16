@@ -2,8 +2,13 @@
   <%= render 'common/errors', resource: @teacher %>  
 
   <div class="field">
-    <%= f.label :name, "Фамилия и имя" %>
-    <%= f.text_field :name %>
+    <%= f.label :last_name, "Фамилия" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name, "Имя" %>
+    <%= f.text_field :first_name %>
   </div>
 
   <div>
