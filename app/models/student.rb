@@ -6,6 +6,7 @@ class Student < ApplicationRecord
   validates :first_name, presence: true  
   validates :last_name, presence: true    
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  validates :email, uniqueness: true
 
   #paginates_per 5
 
