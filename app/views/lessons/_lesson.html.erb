@@ -1,7 +1,7 @@
 
-  <td><%= link_to lesson.style, lesson %></td>
+  <td><%= lesson.style %></td>
   <% if lesson.group %>
-  	<td><%= link_to lesson.group.title, admin_group_path(lesson.group)  %></td>
+  	<td><%= lesson.group.title %></td>
   <%end%>	
   <td><%= render partial: 'teachers/teacher_item', collection: lesson.teachers, as: :teacher %></td>
   <td><%= lesson.start_time %></td>

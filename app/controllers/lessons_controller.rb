@@ -15,12 +15,12 @@ class LessonsController < ApplicationController
 
   def sign_done
      @lesson.sign_done(current_user.student)
-     redirect_to lesson_path
+      redirect_to sign_lesson_path(@lesson)
   end
 
   def sign_out_done
     @lesson.sign_out_done(current_user.student)
-    redirect_to lessons_path
+    redirect_to sign_lesson_path(@lesson)
   end
 
   def my
