@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20161208092537) do
 
   create_table "lessons", force: :cascade do |t|
     t.string   "style",      null: false
-    t.datetime "start_time"
+    t.datetime "start_time", null: false
     t.integer  "duration",   null: false
-    t.datetime "end_time"
+    t.datetime "end_time",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "group_id"
@@ -57,7 +57,8 @@ ActiveRecord::Schema.define(version: 20161208092537) do
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string   "name",               null: false
+    t.string   "first_name",         null: false
+    t.string   "last_name",          null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "photo_file_name"
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 20161208092537) do
     t.string   "last_name",                              null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.boolean  "admin",                  default: false
+    t.boolean  "admin",                  default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

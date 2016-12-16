@@ -9,6 +9,11 @@ class Lesson < ApplicationRecord
   before_validation :set_end_time
 
   validate :validate_time
+  validates :teachers, presence: true
+  validates :style, presence: true  
+  validates :start_time, presence: true  
+  validates :duration, presence: true  
+  validates :end_time, presence: true  
 
   attr
 
