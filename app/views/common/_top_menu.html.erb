@@ -1,14 +1,22 @@
-<% if user_signed_in? %>
-    <span><%= " Привет, #{current_user.email}!" %></span> |
-    <p>Пользователь: <%= current_user.email %> </p>
-    <% if current_user.admin? %>
-        <span><%= link_to "Админка", admin_welcome_index_path %></span> |
-    <% end %>
-    <%= link_to "Мои занятия", my_lessons_path%><br>
-    <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
-
-<% else %>
-    <%= link_to "Войти", new_user_session_path %>
-<% end %>
-<br>
-<br>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">DanceSchool</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to "Меню администратора", admin_welcome_index_path if current_user.admin?%></li>
+            <li><%= link_to "Мои занятия", my_lessons_path%></li>
+            <li><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li>
+            <p>Пользователь: <%= current_user.email %></p>
+          <% else %>
+              <li><%= link_to "Войти", new_user_session_path %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
