@@ -2,5 +2,7 @@
   <%= @teacher.name %>
   <br>
   <%= image_tag @teacher.photo.url(:large) %>
-</p>
-
+  <p>
+  <%= simple_format @teacher.biography%>
+  <strong>Ведет группы:</strong>
+    В разработке
