@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     get :my, on: :collection
     get :past, on: :collection
   end
-  resources :teachers
-  resources :groups
+  resources :teachers, only: [:index, :show]
+  resources :groups, only: [:index, :show]
   get 'welcome/index'
 
   namespace :admin do

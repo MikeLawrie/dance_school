@@ -1,15 +1,19 @@
 <%= render partial: 'lessons/show', object: @lesson  %>
-<%= form_for @lesson do |f| %>
-
+<br>
+<br>
+<% if @presence%>
+  <strong>Вы записаны на этот урок</strong>
   <br>
-
-  <% if @presence%>
-    <strong>Вы записаны на этот урок</strong>
-    <br>
-    <td><%= link_to 'Отменить запись', sign_out_done_lesson_path(@lesson), method: :delete, data: { confirm: 'Подтвержаете отмену записи?' } %></td>
-  <%else%>
-    <td><%= link_to 'Записаться', sign_done_lesson_path(@lesson), method: :patch, data: { confirm: 'Подтвержаете запиcь?' }  %></td>
-  <%end%>
-<% end %>
+  <br>
+  <td><%= form_tag(sign_out_done_lesson_path, method: :delete, data: { confirm: 'Подтверждаете отмену записи?' }) do %>
+    <%= submit_tag 'Отменить запись', class: "btn btn-default" %>
+  <% end %> 
+    </td>
+<%else%>
+  <td>  <%= form_tag(sign_done_lesson_path, method: :patch, data: { confirm: 'Подтверждаете запись?' }) do %>
+    <%= submit_tag 'Записаться', class: "btn btn-default" %>
+  <% end %> 
+<%end%>
+<br>
 
 <%= link_to 'Назад', my_lessons_path %>

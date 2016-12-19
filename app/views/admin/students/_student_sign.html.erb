@@ -1,5 +1,5 @@
   <td>   
-    <%= form_tag(sign_done_admin_lesson_path, method: :patch) do %>
+    <%= form_tag(sign_done_admin_lesson_path, method: :patch, data: { confirm: 'Подтверждаете запись?' }) do %>
       <%= hidden_field_tag :student_id, student.id %>
       <%= submit_tag 'Записать', class: "btn btn-default" %>
     <% end %> 
