@@ -22,11 +22,7 @@ class User < ApplicationRecord
   end
 
   def student_to_user
-    if student = Student.where(email: self.email).first
-      self.student = student
-    else 
-      create_student
-    end
+    student = Student.where(email: self.email).first ? self.student = student : create_student
   end
 
 end

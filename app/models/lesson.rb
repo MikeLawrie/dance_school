@@ -12,9 +12,9 @@ class Lesson < ApplicationRecord
   validates :teachers, presence: true
   validates :style, presence: true  
   validates :start_time, presence: true  
-  validates :duration, presence: true  
+  validates :duration, {presence: true, numericality:{ greater_than: 0}}  
   validates :end_time, presence: true  
-
+  
   attr
 
 #  validates :student_id, on: :update , uniqueness: true
@@ -85,7 +85,7 @@ class Lesson < ApplicationRecord
   end
 
   def set_end_time
-    self.end_time = self.start_time + self.duration * 60
+    self.end_time = self.start_time + self.duration * 60 if self.duration   
   end
 
   def find_students_lessons(student)
