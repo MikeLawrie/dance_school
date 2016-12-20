@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
   has_one :student
 
-  after_create :create_student
+#  after_create :create_student
 
+  after_save :create_student, :if => proc { |l| l.confirmed_at_changed? && l.confirmed_at_was.nil? }
   private
 
   def create_student
