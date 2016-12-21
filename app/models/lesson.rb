@@ -83,6 +83,7 @@ class Lesson < ApplicationRecord
       cross << lesson if lesson.start_time.between?(self.start_time, self.end_time)  || 
       lesson.end_time.between?(self.start_time, self.end_time)
     end
+    cross.delete(self)
     cross
   end
 
