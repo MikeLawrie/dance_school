@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219101459) do
+ActiveRecord::Schema.define(version: 20161221052433) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "style",      null: false
@@ -24,15 +24,23 @@ ActiveRecord::Schema.define(version: 20161219101459) do
     t.datetime "start_time", null: false
     t.integer  "duration",   null: false
     t.datetime "end_time",   null: false
+    t.integer  "room_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "group_id"
     t.index ["group_id"], name: "index_lessons_on_group_id"
+    t.index ["room_id"], name: "index_lessons_on_room_id"
   end
 
   create_table "lessons_teachers", force: :cascade do |t|
     t.integer  "teacher_id", null: false
     t.integer  "lesson_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

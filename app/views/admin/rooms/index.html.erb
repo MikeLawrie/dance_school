@@ -1,0 +1,24 @@
+<h1>Залы</h1>
+
+<table class= "table table-striped">
+  <thead>
+    <tr>
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.order(:title).each do |room|%>
+      <tr>  
+          <td><%= link_to room.title, [:admin, room] %></td>
+          <td><%= link_to 'Редактировать', edit_admin_room_path(room) %> </td>
+          <td><%= link_to 'Удалить', [:admin, room], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%= link_to 'Новый зал', new_admin_room_path %>
+<br>
+<%= link_to 'Основное меню', admin_welcome_index_path %>

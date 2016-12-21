@@ -14,6 +14,12 @@
       <%= f.label "Преподаватели" %>
       <%= f.collection_select :teacher_ids, Teacher.all, :id, :name, {}, { multiple: true }%>
     </div>
+
+  <div class="field">
+    <%= f.label :room, "Зал" %>
+    <%= f.collection_select :room_id, Room.all, :id, :title, :include_blank => true %>
+  </div>
+
   <div class="field">
     <%= f.label :start_time, "Дата и время" %>
     <%= f.datetime_local_field :start_time %>

@@ -5,6 +5,7 @@ class CreateLessons < ActiveRecord::Migration[5.0]
       t.datetime        "start_time", null: false
       t.integer         "duration", null: false
       t.datetime        "end_time", null: false
+      t.references      "room", null: false
 
       t.timestamps
     end

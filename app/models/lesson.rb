@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :group, optional: true
+  belongs_to :room
   has_many :lessons_teachers
   has_many :teachers, through: :lessons_teachers
   has_many :students_lessons
@@ -77,9 +78,9 @@ class Lesson < ApplicationRecord
   def validate_time
     les = Lesson.where('end_time > ?', Time.now)
     les.each do |lesson|
-      if (lesson.start_time > self.start_time && lesson.start_time < self.end_time) || 
-         (lesson.end_time > self.start_time && lesson.end_time < self.end_time)
-          errors.add(:base,'Время проведения пересекается с другими занятиями')
+      if (lesson.room == self.room && (lesson.start_time > self.start_time && lesson.start_time < self.end_time))|| 
+         (lesson.room == self.room && (lesson.end_time > self.start_time && lesson.end_time < self.end_time))
+          errors.add(:base,'Время проведения пересекается с другими занятиями в этом зале')
       end
     end
   end

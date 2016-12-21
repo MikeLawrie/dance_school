@@ -16,6 +16,9 @@
       <%= render partial: 'teachers/teacher_item', collection: @lesson.teachers, as: :teacher %>
     </ul>
   <br>
+Зал:
+<%= @lesson.room.title%>
+<br> 
 Дата и время начала: <%=@lesson.start_time.strftime '%d.%m.%Y %H:%M'%>
    <br> 
 Дата и время окончания: <%=@lesson.end_time.strftime '%d.%m.%Y %H:%M'%> 
