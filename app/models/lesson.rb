@@ -9,7 +9,8 @@ class Lesson < ApplicationRecord
   scope :by_time, -> { order(:start_time) }
   before_validation :set_end_time
 
-  validate :validate_time
+  validate :validate_room_time
+  validate :validate_teacher_time
   validates :teachers, presence: true
   validates :style, presence: true  
   validates :start_time, presence: true  
@@ -75,18 +76,31 @@ class Lesson < ApplicationRecord
 
   private
 
-  def validate_time
+  def lessons_cross
+    cross = []
     les = Lesson.where('end_time > ?', Time.now)
     les.each do |lesson|
-      if (lesson.room == self.room && (lesson.start_time > self.start_time && lesson.start_time < self.end_time))|| 
-         (lesson.room == self.room && (lesson.end_time > self.start_time && lesson.end_time < self.end_time))
-          errors.add(:base,'Время проведения пересекается с другими занятиями в этом зале')
-      end
+      cross << lesson if lesson.start_time.between?(self.start_time, self.end_time)  || 
+      lesson.end_time.between?(self.start_time, self.end_time)
     end
+    cross
+  end
+
+  def lessons_cross_memo
+    @cross ||= lessons_cross
+  end
+
+  def validate_room_time
+    lessons_cross_memo.each {|lesson| errors.add(:base,'Время проведения пересекается с другими занятиями в этом зале') if lesson.room == self.room} 
+  end
+
+  def validate_teacher_time
+    lessons_cross_memo.each {|lesson| errors.add(:base,'Преподаватель уже ведет занятие в это время') if lesson.teachers & self.teachers} 
   end
 
   def set_end_time
-    self.end_time = self.start_time + self.duration * 60 if self.duration   
+    duration = self.duration || 0
+    self.end_time = self.start_time + duration * 60    
   end
 
   def find_students_lessons(student)
