@@ -16,16 +16,11 @@ class Lesson < ApplicationRecord
   validates :start_time, presence: true  
   validates :duration, {presence: true, numericality:{ greater_than: 0}}  
   validates :end_time, presence: true  
-  
-  attr
 
-#  validates :student_id, on: :update , uniqueness: true
-
-
-  def sign_done(student, sign = false)
+  def sign_done(student, by_admin = false)
     self.students << student
     student_lesson = find_students_lessons(student)
-    student_lesson.sign_by_admin = sign
+    student_lesson.sign_by_admin = by_admin
     student_lesson.save
   end
 
@@ -53,24 +48,18 @@ class Lesson < ApplicationRecord
 
   def self.relevant_lessons(weeks_before, weeks_after)
     lessons = []   
-    curent_week = Time.now.strftime('%W').to_i
-    range = (curent_week - weeks_before)..(curent_week + weeks_after) 
-    Lesson.find_each do |lesson|
-      lessons << lesson if range.include?(lesson.start_time.strftime('%W').to_i) 
-    end
+    current_week = Time.now.strftime('%W').to_i
+    range = (current_week - weeks_before)..(current_week + weeks_after) 
+    Lesson.find_each { |lesson| lessons << lesson if range.include?(lesson.start_time.strftime('%W').to_i)} 
     self.sort_by_time(lessons)
   end
 
   def self.sort_by_time(lessons)
     lessons_sorted = []
     time_lessons = {}
-    lessons.each do |lesson|
-      time_lessons[lesson.start_time] = lesson
-    end 
+    lessons.each { |lesson| time_lessons[lesson.start_time] = lesson }
     lessons_time = time_lessons.sort
-    lessons_time.each do |time,lesson|
-      lessons_sorted << lesson
-    end
+    lessons_time.each {|time,lesson| lessons_sorted << lesson}
     lessons_sorted
   end
 
@@ -78,8 +67,7 @@ class Lesson < ApplicationRecord
 
   def lessons_cross
     cross = []
-    les = Lesson.where('end_time > ?', Time.now)
-    les.each do |lesson|
+    Lesson.where('end_time > ?', Time.now).find_each do |lesson|
       cross << lesson if lesson.start_time.between?(self.start_time, self.end_time)  || 
       lesson.end_time.between?(self.start_time, self.end_time)
     end
@@ -100,8 +88,8 @@ class Lesson < ApplicationRecord
   end
 
   def set_end_time
-    duration = self.duration || 0
-    self.end_time = self.start_time + duration * 60    
+    self.duration ||= 0
+    self.end_time = self.start_time + self.duration * 60    
   end
 
   def find_students_lessons(student)

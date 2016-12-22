@@ -8,9 +8,7 @@ class Student < ApplicationRecord
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
   validates :email, uniqueness: true
 
-  #paginates_per 5
-
-  scope :by_last_name, -> { order(:last_name) } # убирать?
+  scope :by_last_name, -> { order(:last_name) }
 
   def self.search(term)
     if term
