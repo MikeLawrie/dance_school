@@ -12,10 +12,10 @@ class Admin::TeachersController < Admin::BaseController
   def create
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
-      redirect_to admin_teacher_path(@teacher), notice: 'Преподаватель создан.' 
+      redirect_to admin_teacher_path(@teacher), notice: 'Преподаватель создан.'
     else
-      render :new 
-    end   
+      render :new
+    end
   end
 
   def show
@@ -25,10 +25,10 @@ class Admin::TeachersController < Admin::BaseController
   end
 
   def update
-     if @teacher.update(teacher_params)
-      redirect_to admin_teacher_path(@teacher), notice: 'Преподаватель изменен.' 
+    if @teacher.update(teacher_params)
+      redirect_to admin_teacher_path(@teacher), notice: 'Преподаватель изменен.'
     else
-       render :edit 
+      render :edit
     end
   end
 
@@ -46,5 +46,4 @@ class Admin::TeachersController < Admin::BaseController
   def teacher_params
     params.require(:teacher).permit(:last_name, :first_name, :photo, :biography)
   end
-
 end

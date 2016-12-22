@@ -1,8 +1,8 @@
 class Admin::LessonsController < Admin::BaseController
-  before_action :set_lesson, except: [:index, :index_all, :new, :create] 
+  before_action :set_lesson, except: [:index, :index_all, :new, :create]
 
   def index
-    @lessons = Lesson.relevant_lessons(1,2)
+    @lessons = Lesson.relevant_lessons(1, 2)
   end
 
   def index_all
@@ -13,16 +13,16 @@ class Admin::LessonsController < Admin::BaseController
 
   def new
     @lesson = Lesson.new
-    @lesson.start_time = Time.now.strftime('%F %R')  
+    @lesson.start_time = Time.now.strftime('%F %R')
   end
 
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
-      redirect_to admin_lesson_path(@lesson), notice: 'Урок создан.' 
+      redirect_to admin_lesson_path(@lesson), notice: 'Урок создан.'
     else
-      render :new 
-    end   
+      render :new
+    end
   end
 
   def show
@@ -33,10 +33,10 @@ class Admin::LessonsController < Admin::BaseController
   end
 
   def update
-     if @lesson.update(lesson_params)
-      redirect_to admin_lesson_path(@lesson), notice: 'Урок изменен.' 
+    if @lesson.update(lesson_params)
+      redirect_to admin_lesson_path(@lesson), notice: 'Урок изменен.'
     else
-       render :edit 
+      render :edit
     end
   end
 
@@ -53,12 +53,12 @@ class Admin::LessonsController < Admin::BaseController
 
   def sign_done
     student = Student.find(params[:student_id])
-    @lesson.sign_done(student, true )
+    @lesson.sign_done(student, true)
     redirect_to sign_admin_lesson_path(@lesson)
   end
 
   def sign_out_done
-    student = Student.find(params[:student_id])    
+    student = Student.find(params[:student_id])
     @lesson.sign_out_done(student)
     redirect_to sign_admin_lesson_path(@lesson)
   end
@@ -66,13 +66,13 @@ class Admin::LessonsController < Admin::BaseController
   def student_present
     student_lesson = StudentsLesson.find(params[:student_lesson_id])
     @lesson.student_presence(student_lesson, true)
-    redirect_to admin_lesson_path(@lesson)    
+    redirect_to admin_lesson_path(@lesson)
   end
 
   def student_not_present
     student_lesson = StudentsLesson.find(params[:student_lesson_id])
     @lesson.student_presence(student_lesson, false)
-    redirect_to admin_lesson_path(@lesson)    
+    redirect_to admin_lesson_path(@lesson)
   end
 
   private
@@ -84,5 +84,4 @@ class Admin::LessonsController < Admin::BaseController
   def lesson_params
     params.require(:lesson).permit(:style, :start_time, :duration, :group_id, :room_id, teacher_ids: [])
   end
-
 end

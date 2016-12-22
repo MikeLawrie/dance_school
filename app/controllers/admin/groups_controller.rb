@@ -14,8 +14,8 @@ class Admin::GroupsController < Admin::BaseController
     if @group.save
       redirect_to admin_group_path(@group), notice: 'Группа создана.'
     else
-      render :new 
-    end   
+      render :new
+    end
   end
 
   def show
@@ -25,10 +25,10 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def update
-     if @group.update(group_params)
-      redirect_to admin_group_path(@group), notice: 'Группа изменена.' 
+    if @group.update(group_params)
+      redirect_to admin_group_path(@group), notice: 'Группа изменена.'
     else
-       render :edit 
+      render :edit
     end
   end
 
@@ -46,5 +46,4 @@ class Admin::GroupsController < Admin::BaseController
   def group_params
     params.require(:group).permit(:style, :title)
   end
-
 end

@@ -1,3 +1,3 @@
 class Room < ApplicationRecord
-    has_many :lessons
+  has_many :lessons
 end

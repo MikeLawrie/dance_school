@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
-  
+
   resources :lessons, only: [:index, :show] do
     get :sign, on: :member
     patch :sign_done, on: :member
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   namespace :admin do
-    resources :lessons  do
+    resources :lessons do
       get :sign, on: :member
       get :index_all, on: :collection
       patch :sign_done, on: :member
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     resources :teachers
     resources :groups
     resources :students
-    resources :rooms    
-  get 'welcome/index'
+    resources :rooms
+    get 'welcome/index'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

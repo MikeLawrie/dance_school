@@ -3,9 +3,9 @@ class Student < ApplicationRecord
   has_many :students_lessons
   has_many :lessons, through: :students_lessons
 
-  validates :first_name, presence: true  
-  validates :last_name, presence: true    
-  validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates_format_of :email, with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
   validates :email, uniqueness: true
 
   scope :by_last_name, -> { order(:last_name) }
@@ -18,5 +18,4 @@ class Student < ApplicationRecord
       all
     end
   end
-
 end

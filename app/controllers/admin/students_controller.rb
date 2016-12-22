@@ -18,11 +18,11 @@ class Admin::StudentsController < Admin::BaseController
     if @student.save
       redirect_to admin_student_path(@student), notice: 'Ученик создан.'
     else
-      render :new 
-    end   
+      render :new
+    end
   end
 
- private
+  private
 
   def set_student
     @student = Student.find(params[:id])
@@ -31,5 +31,4 @@ class Admin::StudentsController < Admin::BaseController
   def student_params
     params.require(:student).permit(:email, :first_name, :last_name)
   end
-
 end

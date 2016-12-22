@@ -6,21 +6,21 @@ class User < ApplicationRecord
 
   has_one :student
 
-  after_save :student_to_user, :if => proc { |l| l.confirmed_at_changed? && l.confirmed_at_was.nil? }
-  
+  after_save :student_to_user, if: proc { |l| l.confirmed_at_changed? && l.confirmed_at_was.nil? }
+
   private
 
   def create_student
     student = Student.new
-    student.user_id = self.id 
-    student.email = self.email
-    student.first_name = self.first_name
-    student.last_name = self.last_name
+    student.user_id = id
+    student.email = email
+    student.first_name = first_name
+    student.last_name = last_name
     student.save
   end
 
   def student_to_user
-    student = Student.where(email: self.email).first ? self.student = student : create_student
+    stud = Student.where(email: email).first
+    stud ? self.student = stud : create_student
   end
-
 end

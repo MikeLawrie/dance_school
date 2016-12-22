@@ -21,9 +21,9 @@
   </tbody>
 </table>
 <br>
-<% if @pagination %>
-<%= paginate @lessons %>
-<%end%>
+
+<%= paginate @lessons if @pagination  %>
+
 <br>
 <%= link_to 'Новый урок', new_admin_lesson_path %>
 <br>

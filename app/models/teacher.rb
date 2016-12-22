@@ -2,18 +2,17 @@ class Teacher < ApplicationRecord
   has_many :lessons_teachers
   has_many :lessons, through: :lessons_teachers
 
-  validates :first_name, presence: true  
-  validates :last_name, presence: true  
-  
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   has_attached_file :photo, styles: { large: "600x600>", medium: "300x300>", thumb: "100x100>" }, default_url: "/photos/:style/missing.png"
   validates_attachment :photo,
-    content_type: { content_type: ["image/jpeg", "image/gif", "image/png"]},
-    size: { in: 0..2.megabytes }
+                       content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
+                       size: { in: 0..2.megabytes }
 
   scope :by_name, -> { order(:name) }
 
   def name
     "#{first_name} #{last_name}"
   end
-
 end

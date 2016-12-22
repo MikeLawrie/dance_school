@@ -13,5 +13,4 @@ class TeachersController < ApplicationController
   def set_teacher
     @teacher = Teacher.find(params[:id])
   end
-
 end

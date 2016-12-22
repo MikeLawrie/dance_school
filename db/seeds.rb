@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Teacher.create(last_name: 'Литке', first_name: 'Евген')
-Group.create(style:'Хастел', title: 'ДнД')
+Group.create(style: 'Хастел', title: 'ДнД')
 Room.create(title: 'Зал 1')
-Lesson.create(style:'Хастел',start_time:'2016-11-23T10:11:00', group_id: '1', duration: 60, room_id: '1', teacher_ids: [1])
+Lesson.create(style: 'Хастел', start_time: '2016-11-23T10:11:00', group_id: '1', duration: 60, room_id: '1', teacher_ids: [1])
 User.create(email: 'test@test.com', password: 'qazwsx', admin: 'true', first_name: 'Админ', last_name: 'Админов')
 User.create(email: 'test2@test.com', password: 'qazwsx', first_name: 'Вася', last_name: 'Васин')

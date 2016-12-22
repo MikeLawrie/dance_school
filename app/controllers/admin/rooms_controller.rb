@@ -14,8 +14,8 @@ class Admin::RoomsController < Admin::BaseController
     if @room.save
       redirect_to admin_room_path(@room), notice: 'Группа создана.'
     else
-      render :new 
-    end   
+      render :new
+    end
   end
 
   def show
@@ -25,10 +25,10 @@ class Admin::RoomsController < Admin::BaseController
   end
 
   def update
-     if @room.update(room_params)
-      redirect_to admin_room_path(@room), notice: 'Группа изменена.' 
+    if @room.update(room_params)
+      redirect_to admin_room_path(@room), notice: 'Группа изменена.'
     else
-       render :edit 
+      render :edit
     end
   end
 
@@ -46,5 +46,4 @@ class Admin::RoomsController < Admin::BaseController
   def room_params
     params.require(:room).permit(:title)
   end
-
 end
